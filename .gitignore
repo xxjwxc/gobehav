@@ -13,13 +13,4 @@ dist/
 .vscode/
 .DS_Store
 
-# bge-m3 向量兜底：大文件不进仓库，由 tools/gobehav/export_bge_m3.py 在内网生成
-# （label_prototypes.f32 / label_index.json / meta.json 体积小，保留用于核对）
-assets/bge_m3/encoder*.onnx
-assets/bge_m3/encoder*.onnx.data
-assets/bge_m3/tokenizer.json
 
-# onnxruntime 运行时库：跑起来要，但同样不进仓库（各平台各拿各的）
-assets/bge_m3/onnxruntime*.dll
-assets/bge_m3/libonnxruntime*.so*
-assets/bge_m3/libonnxruntime*.dylib
