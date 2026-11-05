@@ -1,0 +1,10 @@
+2026/11/05 17:44:53 INFO gobehav: 语义兜底已启用 dir=e:/xxj/work/workspace/github/xxjwxc/gobehav/assets/bge_m3
+语种: [cn]
+
+对不起，我真的不想要这个东西
+  分词: 对不起/，/我/真的/不/想/要/这个/东西
+  [7,9) behavior_no          p=1 片段="不想"
+
+这波操作我是真的服了
+  分词: 这/波/操/作/我/是/真的/服/了
+  [0,10) behavior_thanking    p=100 片段="这波操作我是真的服了"

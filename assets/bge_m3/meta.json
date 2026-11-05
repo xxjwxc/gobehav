@@ -1,0 +1,179 @@
+{
+  "model": "BAAI/bge-m3",
+  "source_onnx": "onnx/model.onnx (ModelScope 官方)",
+  "pooling": "cls",
+  "normalize": true,
+  "dim": 1024,
+  "max_len": 64,
+  "fp32": {
+    "bytes": 724923,
+    "sha256": "f84251230831afb359ab26d9fd37d5936d4d9bb5d1d5410e66442f630f24435b",
+    "outputs": [
+      "token_embeddings",
+      "sentence_embedding"
+    ]
+  },
+  "verify_torch": {
+    "min_cos": 1.0,
+    "note": "torch normalize(last_hidden_state[:,0]) vs onnx sentence_embedding"
+  },
+  "int8": {
+    "file": "encoder.int8.onnx",
+    "bytes": 1057067,
+    "sha256": "3559bcd5a1b360ec6fa75500090183f3f90fe37dd7cdc12f9265b0c2cde2bb2b",
+    "external_data": {
+      "file": "encoder.int8.onnx.data",
+      "bytes": 567735312
+    }
+  },
+  "verify_int8": {
+    "min_cos": 0.98262,
+    "mean_cos": 0.98555,
+    "max_abs_diff": 0.022833
+  },
+  "sample_scores": [
+    {
+      "text": "对不起，我真的很抱歉",
+      "cos_fp32_int8": 0.987613
+    },
+    {
+      "text": "我今天特别开心，哈哈哈哈",
+      "cos_fp32_int8": 0.986293
+    },
+    {
+      "text": "这个多少钱？",
+      "cos_fp32_int8": 0.984396
+    },
+    {
+      "text": "虽然很难，但我还是要坚持",
+      "cos_fp32_int8": 0.985376
+    },
+    {
+      "text": "请帮我一下，麻烦你了",
+      "cos_fp32_int8": 0.987316
+    },
+    {
+      "text": "我不喜欢这个",
+      "cos_fp32_int8": 0.98262
+    },
+    {
+      "text": "谢谢你，辛苦了",
+      "cos_fp32_int8": 0.985924
+    },
+    {
+      "text": "整个都不好了",
+      "cos_fp32_int8": 0.984865
+    }
+  ],
+  "prototypes": {
+    "file": "label_prototypes.f32",
+    "count": 73,
+    "dim": 1024,
+    "sha256": "94b6ee0527ae69e3d62bcbeb447c87a55849804424b4f35e2c84d98edee2a1cd",
+    "unique_phrases": 3152
+  },
+  "probe_scores": [
+    {
+      "text": "这波操作我是真的服了",
+      "top": [
+        {
+          "tag": "behavior_thanking",
+          "score": 0.7056
+        },
+        {
+          "tag": "behavior_praise",
+          "score": 0.6988
+        },
+        {
+          "tag": "mood_astonished",
+          "score": 0.6971
+        }
+      ]
+    },
+    {
+      "text": "绝绝子，太过分了吧",
+      "top": [
+        {
+          "tag": "mood_blame",
+          "score": 0.6346
+        },
+        {
+          "tag": "mood_astonished",
+          "score": 0.618
+        },
+        {
+          "tag": "mood_hate",
+          "score": 0.6177
+        }
+      ]
+    },
+    {
+      "text": "我真的栓Q了",
+      "top": [
+        {
+          "tag": "mood_helpless",
+          "score": 0.6532
+        },
+        {
+          "tag": "mood_fret",
+          "score": 0.65
+        },
+        {
+          "tag": "mood_angry",
+          "score": 0.635
+        }
+      ]
+    },
+    {
+      "text": "又emo了，不想说话",
+      "top": [
+        {
+          "tag": "behavior_hush",
+          "score": 0.7384
+        },
+        {
+          "tag": "mood_tired",
+          "score": 0.699
+        },
+        {
+          "tag": "mood_fret",
+          "score": 0.6953
+        }
+      ]
+    },
+    {
+      "text": "这事儿整挺好",
+      "top": [
+        {
+          "tag": "behavior_yes",
+          "score": 0.7468
+        },
+        {
+          "tag": "behavior_encourage",
+          "score": 0.6983
+        },
+        {
+          "tag": "mood_firm",
+          "score": 0.6912
+        }
+      ]
+    }
+  ],
+  "bench_cpu": {
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "batch_size": 8,
+    "seq_len_max": 10,
+    "single_ms": 14.74,
+    "batch_ms": 56.61,
+    "per_item_ms": 7.08
+  },
+  "exported_at": "2026-11-05 16:21:59",
+  "versions": {
+    "torch": "2.15.0+cpu",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.1",
+    "transformers": "5.22.1"
+  }
+}

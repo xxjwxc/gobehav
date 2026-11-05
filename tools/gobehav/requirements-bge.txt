@@ -1,0 +1,18 @@
+# bge-m3 量化 / 校验 / 延迟实测 / 标签原型生成所需依赖。
+# 只在导出机器上用，运行期（Go）不依赖 Python。
+#
+#   python -m venv .venv
+#   .venv/bin/pip install -r tools/gobehav/requirements-bge.txt
+#
+# 版本下限按实测通过的环境写：Python 3.12 / torch 2.15 cpu / transformers 5.22。
+torch>=2.2
+transformers>=4.40
+onnx>=1.15
+onnxruntime>=1.17
+sentencepiece>=0.1.99
+numpy>=1.24
+pyyaml>=6.0
+modelscope>=1.9
+
+# 走 GPU 延迟实测时另外装（会替换 onnxruntime，CPU 侧仍可用）：
+#   pip install onnxruntime-gpu nvidia-cuda-runtime-cu12 nvidia-cudnn-cu12 nvidia-cublas-cu12
